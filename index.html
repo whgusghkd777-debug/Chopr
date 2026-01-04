@@ -6,113 +6,133 @@
     <title>CHO HYUNHWANG ポートフォリオ</title>
     <style>
         body { font-family: 'Yu Gothic', 'Hiragino Sans', sans-serif; margin: 0; background: linear-gradient(to bottom, #f0f9f4, #e8f5e9); color: #333; line-height: 1.7; }
-        header { background: linear-gradient(135deg, #007BFF, #28a745); color: white; padding: 80px 20px; text-align: center; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
-        .container { max-width: 1100px; margin: 40px auto; padding: 20px; }
+        header { background: linear-gradient(135deg, #007BFF, #28a745); color: white; padding: 60px 20px; text-align: center; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
         section { background: white; padding: 40px; margin-bottom: 40px; border-radius: 25px; box-shadow: 0 6px 25px rgba(0,0,0,0.08); transition: 0.3s; }
-        section:hover { transform: translateY(-8px); }
-        h1 { font-size: 2.8em; margin: 10px 0; }
-        h2 { color: #007BFF; border-bottom: 3px solid #28a745; padding-bottom: 12px; font-size: 1.9em; }
-        .skills { display: flex; flex-wrap: wrap; gap: 15px; margin: 25px 0; }
-        .skill-tag { background: #e8f5e9; color: #28a745; padding: 12px 25px; border-radius: 30px; font-weight: bold; transition: 0.3s; }
-        .skill-tag:hover { background: #28a745; color: white; transform: scale(1.08); }
-        table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        th, td { border: 1px solid #ddd; padding: 14px; text-align: left; }
-        th { background: #e8f5e9; color: #28a745; font-weight: bold; }
-        a { color: #007BFF; text-decoration: none; font-weight: bold; }
-        a:hover { color: #28a745; text-decoration: underline; }
-        .project { padding: 30px; background: #f8fff9; border-left: 6px solid #28a745; border-radius: 15px; margin-bottom: 35px; }
-        .profile-img { border-radius: 15px; width: 180px; height: auto; border: 6px solid white; box-shadow: 0 6px 20px rgba(0,0,0,0.2); margin-bottom: 20px; }
+        section:hover { transform: translateY(-5px); }
+        h1 { font-size: 2.5em; margin: 10px 0; }
+        h2 { color: #007BFF; border-bottom: 3px solid #28a745; padding-bottom: 12px; font-size: 1.8em; margin-top: 0; }
+        h3 { color: #333; margin-bottom: 10px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .skill-tag { background: #e8f5e9; color: #28a745; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
+        th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+        th { background: #f9f9f9; width: 80px; }
+        .category-row { background: #e8f5e9; font-weight: bold; color: #28a745; }
+        .project { padding: 25px; background: #f8fff9; border-left: 6px solid #28a745; border-radius: 15px; margin-bottom: 30px; }
+        .project-meta { font-size: 0.9em; color: #666; margin-bottom: 15px; }
+        .project-links a { display: inline-block; margin-right: 15px; background: #007BFF; color: white; padding: 5px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; }
+        .profile-img { border-radius: 20px; width: 160px; height: auto; border: 5px solid white; box-shadow: 0 6px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .text-block { white-space: pre-wrap; margin-bottom: 20px; }
         footer { text-align: center; padding: 40px; background: linear-gradient(135deg, #007BFF, #28a745); color: white; border-top-left-radius: 60px; border-top-right-radius: 60px; }
-        @media (max-width: 768px) { h1 { font-size: 2.2em; } .container { padding: 15px; } .profile-img { width: 140px; } }
+        @media (max-width: 768px) { h1 { font-size: 1.8em; } .container { padding: 10px; } }
     </style>
 </head>
 <body>
+
     <header>
-        <img class="profile-img" src="cho.jpg" alt="証明写真">
-        <h1>CHO HYUNHWANG ポートフォリオ</h1>
-        <p>IT独学中・日本IT企業志望</p>
-        <p>Email: whgusghkd777@gmail.com | Tel: +82-10-7481-2589</p>
-        <p>ポートフォリオURL: https://whgusghkd777.github.io</p>
+        <img class="profile-img" src="cho.jpg" alt="証明写真"> <h1>曺 現煌 (CHO HYUNHWANG)</h1>
+        <p>1994年 2月 10日生 (満 31 歳) | 男</p>
+        <p>📧 whgusghkd777@gmail.com | 📱 +82-10-7481-2589</p>
+        <p>住所: ソウル特別市 城東区 行堂路79番地</p>
     </header>
 
     <div class="container">
-        <section id="about">
-            <h2>自己紹介</h2>
-            <p>1994年2月10日生（満31歳）。韓国ソウル在住。音楽専攻卒業後、セキュリティ職経験。2024年より東京ワーキングホリデー。Global in ITコース2025年12月31日修了予定。ビジネスレベルの日本語力あり。日本企業でJava/Springを活かし、品質重視の開発に貢献したいです。</p>
+        
+        <section>
+            <h2>志望動機</h2>
+            <div class="text-block">私は以前、日本で勤務した経験があり、その中で日本の職人精神に深く感銘を受けました。楽器店で働いた時、お客様一人ひとりのニーズに寄り添った提案を行い、最後まで責任を持って対応する姿勢に心を打たれました。IT分野においても、同様に品質へのこだわりを持ち、ユーザーに安心と満足を提供できるサービス開発に取り組みたいと考えています。職人のように丁寧で誠実な開発を通じて、チームやユーザーに信頼されるエンジニアを目指してまいります。</div>
+            
+            <h2>自己PR</h2>
+            <div class="text-block">私の強みは「課題解決力」と「協調性」です。音楽制作やバンド活動で培ったコミュニケーション力を活かし、チーム内で冷静に課題を分析し、柔軟に対応することができます。IT開発現場においても、常に学ぶ姿勢を持ち、技術力だけでなくチームとの連携を重視しながら、御社のプロジェクトに誠実に取り組んでまいります。</div>
         </section>
 
         <section id="skills">
-            <h2>保有スキル</h2>
+            <h2>保有スキル・特技</h2>
             <div class="skills">
-                <span class="skill-tag">ビジネス日本語 (日本就業経験1年)</span>
-                <span class="skill-tag">Javaプログラミング</span>
-                <span class="skill-tag">Spring / Spring Boot</span>
-                <span class="skill-tag">JSP / Web開発</span>
+                <span class="skill-tag">Java / Spring Boot</span>
+                <span class="skill-tag">JPA / Hibernate</span>
+                <span class="skill-tag">Oracle / PostgreSQL</span>
                 <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL / Oracle / PostgreSQL</span>
-                <span class="skill-tag">Git / GitHub Pages</span>
+                <span class="skill-tag">HTML / CSS / JSP</span>
+                <span class="skill-tag">Git / GitHub</span>
+                <span class="skill-tag">日本語 (JLPT N2レベル)</span>
+                <span class="skill-tag">音楽制作 (Cubase / Mixing)</span>
+            </div>
+            <p><strong>趣味:</strong> 登山、ランニング、筋力トレーニング、作曲</p>
+        </section>
+
+        <section id="projects">
+            <h2>プロジェクト</h2>
+            
+            <div class="project">
+                <h3>デジ楽 (ホテル予約サイト)</h3>
+                <div class="project-meta">
+                    2025.10.27 ~ 2025.11.14 (チーム開発 5名)
+                </div>
+                <p><strong>内容:</strong> 日本国内のホテル検索・予約システム。MVC構造を採用し、安定したバックエンド処理を実装。</p>
+                <ul>
+                    <li>担当: バックエンド開発メイン、DB設計、DTO/DAO実装</li>
+                    <li>技術: Java 1.8, Spring Framework, Oracle, Apache Tomcat 9, Eclipse</li>
+                    <li>成果: 楽観的ロックによる予約重複防止、トランザクション管理、例外処理の標準化</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/whgusghkd777-debug/dejiraku" target="_blank">GitHub</a>
+                    <a href="https://url.kr/fnf22j" target="_blank">Presentation (PPT)</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>MuSuBi (音楽共有・発見プラットフォーム)</h3>
+                <div class="project-meta">
+                    2025.12.10 ~ 2025.12.31 (個人開発)
+                </div>
+                <p><strong>内容:</strong> 「偶然の出会い」をコンセプトにした音楽共有サービス。検索を排除したランダム再生UIが特徴。</p>
+                <ul>
+                    <li>担当: 企画、要件定義、DB設計、フルスタック開発</li>
+                    <li>技術: Java 17, Spring Boot, Spring Security, JPA, PostgreSQL, Thymeleaf</li>
+                    <li>成果: Spring Securityによる認証管理、JPAによるEntity整合性管理、ランキングロジック実装</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/whgusghkd777-debug/MuSuBiMusic" target="_blank">GitHub</a>
+                    <a href="https://buly.kr/GvoLgJn" target="_blank">Presentation (PPT)</a>
+                </div>
             </div>
         </section>
 
         <section id="history">
             <h2>学歴・職歴・資格</h2>
             <table>
-                <tr><th>年</th><th>月</th><th>内容</th></tr>
-                <tr><td colspan="3"><strong>学歴</strong></td></tr>
-                <tr><td>2010</td><td>2</td><td>城東高等学校 入学</td></tr>
-                <tr><td>2012</td><td>2</td><td>城東高等学校 卒業</td></tr>
-                <tr><td>2013</td><td>2</td><td>百済芸術大学校 実用音楽学科ベース専攻 入学</td></tr>
-                <tr><td>2013</td><td>9</td><td>休学（兵役）</td></tr>
-                <tr><td>2015</td><td>9</td><td>復学</td></tr>
-                <tr><td>2017</td><td>2</td><td>卒業</td></tr>
-                <tr><td>2024</td><td>2</td><td>ワーキングホリデー（東京、2025年2月まで）</td></tr>
-                <tr><td>2025</td><td>7</td><td>Global in ITコース 受講開始（2025.12.31修了予定）</td></tr>
-                <tr><td colspan="3"><strong>職歴</strong></td></tr>
-                <tr><td>2017</td><td>1</td><td>国際金融センター IFC セキュリティチーム VIP警護 正規職</td></tr>
-                <tr><td>2019</td><td>4</td><td>ウリ銀行 施設警備・来訪者対応 正規職</td></tr>
-                <tr><td>2021</td><td>7</td><td>シンハン銀行 顧客対応・セキュリティ監視 正規職</td></tr>
-                <tr><td>2023</td><td>12</td><td>退社（ワーキングホリデー）</td></tr>
-                <tr><td colspan="3"><strong>アルバイト</strong></td></tr>
-                <tr><td>2015</td><td>4</td><td>洋食屋ハンスーデリ明洞店 接客（2016.12まで）</td></tr>
-                <tr><td>2024</td><td>4</td><td>イケベ楽器秋葉原店 楽器管理・修理接客（2024.11まで）</td></tr>
-                <tr><td colspan="3"><strong>資格</strong></td></tr>
-                <tr><td>2018</td><td>8</td><td>自動車運転免許第一種普通</td></tr>
-                <tr><td>2025</td><td>7</td><td>JLPT N3 取得</td></tr>
-                <tr><td>2025</td><td>11</td><td>JPT 580点</td></tr>
-                <tr><td>2025</td><td>12</td><td>JLPT N2 受験予定（2026.1結果）</td></tr>
+                <tr class="category-row"><td colspan="3">学歴</td></tr>
+                <tr><td>2012.02</td><td>卒業</td><td>城東高等学校</td></tr>
+                <tr><td>2017.02</td><td>卒業</td><td>百済芸術大学校 実用音楽学科 ベース専攻</td></tr>
+                <tr><td>2025.12</td><td>修了予定</td><td>株式会社 Global in 海外就職教育センター (ITコース4期)</td></tr>
+                
+                <tr class="category-row"><td colspan="3">職歴</td></tr>
+                <tr><td>2017.01</td><td>入社</td><td>国際金融センター IFC セキュリティチーム (VIP警護)</td></tr>
+                <tr><td>2019.04</td><td>入社</td><td>ウリ銀行(WooriBank) 施設警備・来訪者対応</td></tr>
+                <tr><td>2021.07</td><td>入社</td><td>シンハン銀行(Shinhan Bank) 顧客対応・セキュリティ監視</td></tr>
+                <tr><td>2024.04</td><td>アルバイト</td><td>(東京)イケベ楽器秋葉原店 楽器管理・接客 (11月まで)</td></tr>
+
+                <tr class="category-row"><td colspan="3">資格・語学</td></tr>
+                <tr><td>2018.08</td><td>取得</td><td>自動車運転免許第一種普通</td></tr>
+                <tr><td>2025.07</td><td>取得</td><td>日本語能力試験(JLPT) N3</td></tr>
+                <tr><td>2025.11</td><td>取得</td><td>日本語能力試験(JPT) 580点</td></tr>
+                <tr><td>2025.12</td><td>受験</td><td>日本語能力試験(JLPT) N2 (1月結果発表)</td></tr>
             </table>
         </section>
 
-        <section id="projects">
-            <h2>主なプロジェクト</h2>
-            <div class="project">
-                <h3>デジ楽 - ホテル予約サイト（チーム開発・2025.10〜11）</h3>
-                <p>技術: Java1.8 + Spring + Oracle + Tomcat9 + Eclipse</p>
-                <p>役割: バックエンドメイン（予約重複防止ロック・トランザクション処理）</p>
-                <a href="https://www.notion.so/PPT-2d278b58bbbf80859a7ada329ae52326" target="_blank">Notion PPT・詳細を見る</a>
-            </div>
-            <div class="project">
-                <h3>MuSuBi - 音楽共有プラットフォーム（個人開発・2025.12）</h3>
-                <p>技術: Java17 + Spring Boot/Security/JPA + PostgreSQL + Thymeleaf</p>
-                <p>役割: 全工程（ドメイン設計・セキュリティ・ランキングロジック）</p>
-                <a href="https://www.notion.so/MuSuBi-PPT-2da78b58bbbf804ca679d460a98ce0ee" target="_blank">Notion PPT・詳細を見る</a>
-            </div>
+        <section>
+            <h2>外部リンク</h2>
+            <p>✔ <strong>GitHub:</strong> <a href="https://github.com/whgusghkd777-debug" target="_blank">github.com/whgusghkd777-debug</a></p>
+            <p>✔ <strong>Technical Blog:</strong> <a href="https://url.kr/xt4qjr" target="_blank">Learning Records</a></p>
         </section>
 
-        <section id="blog">
-            <h2>技術ブログ</h2>
-            <p>Java / Python / Spring / SQL 等学習記録</p>
-            <a href="https://www.notion.so/2d278b58bbbf81078017dc3fba876c3a" target="_blank">Notion技術ブログへ</a>
-        </section>
-
-        <section id="contact">
-            <h2>連絡先</h2>
-            <p>日本IT企業への応募意欲あります。履歴書PDF別途提出可能です。お気軽にご連絡ください。</p>
-        </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 CHO HYUNHWANG | GitHub Pagesで公開</p>
+        <p>&copy; 2026 CHO HYUNHWANG Portfolio | Built with Passion</p>
     </footer>
+
 </body>
 </html>
