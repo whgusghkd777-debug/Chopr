@@ -1,151 +1,588 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曺 現煌 (CHO HYUNHWANG) ポートフォリオ</title>
-    <style>
-        body { font-family: 'Yu Gothic', 'Hiragino Sans', sans-serif; margin: 0; background: linear-gradient(to bottom, #f0f9f4, #e8f5e9); color: #333; line-height: 1.8; }
-        header { background: linear-gradient(135deg, #007BFF, #28a745); color: white; padding: 60px 20px; text-align: center; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-        section { background: white; padding: 40px; margin-bottom: 40px; border-radius: 25px; box-shadow: 0 6px 25px rgba(0,0,0,0.08); transition: 0.3s; }
-        section:hover { transform: translateY(-5px); }
-        h1 { font-size: 2.5em; margin: 10px 0; }
-        h2 { color: #007BFF; border-bottom: 3px solid #28a745; padding-bottom: 12px; font-size: 1.8em; margin-top: 0; margin-bottom: 25px; }
-        h3 { color: #333; margin-top: 25px; border-left: 5px solid #007BFF; padding-left: 15px; }
-        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
-        .skill-tag { background: #e8f5e9; color: #28a745; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 0.9em; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
-        th, td { border: 1px solid #eee; padding: 12px; text-align: left; vertical-align: top; }
-        th { background: #f9f9f9; width: 120px; font-weight: bold; }
-        .category-row { background: #e8f5e9; font-weight: bold; color: #28a745; text-align: center; }
-        .project { padding: 25px; background: #f8fff9; border-left: 6px solid #28a745; border-radius: 15px; margin-bottom: 30px; }
-        .project-tagline { font-weight: bold; color: #28a745; margin-bottom: 10px; font-size: 1.1em; display: block; }
-        .project-meta { font-size: 0.95em; color: #555; background: #fff; padding: 10px; border-radius: 10px; margin: 10px 0; border: 1px solid #eee; }
-        .project-links a { display: inline-block; margin-right: 15px; background: #007BFF; color: white; padding: 6px 18px; border-radius: 5px; text-decoration: none; font-size: 0.9em; font-weight: bold; }
-        .profile-img { border-radius: 20px; width: 160px; height: auto; border: 5px solid white; box-shadow: 0 6px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .text-block { white-space: pre-wrap; margin-bottom: 30px; text-align: justify; background: #fcfcfc; padding: 20px; border-radius: 15px; border: 1px border #f0f0f0; }
-        footer { text-align: center; padding: 40px; background: linear-gradient(135deg, #007BFF, #28a745); color: white; border-top-left-radius: 60px; border-top-right-radius: 60px; }
-        ul { padding-left: 20px; }
-        @media (max-width: 768px) { h1 { font-size: 1.8em; } .container { padding: 10px; } th { width: 80px; } }
-    </style>
-</head>
-<body>
+import { useState } from "react";
+import { motion } from "motion/react";
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Github, 
+  ExternalLink, 
+  Music, 
+  Guitar,
+  Disc3,
+  Headphones,
+  Code2,
+  GraduationCap,
+  Briefcase,
+  Award,
+  Sparkles
+} from "lucide-react";
+import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 
-    <header>
-        <img class="profile-img" src="cho.jpg" alt="証明写真">
-        <h1>曺 現煌 (CHO HYUNHWANG)</h1>
-        <p>1994年2月10日生 (満31歳)</p>
-        <p>📧 whgusghkd777@gmail.com | 📱 +82-10-7481-2589</p>
-        <p>〒04713 ソウル特別市 城東区 行堂路79番地、104棟603号室</p>
-    </header>
+export default function App() {
+  const [activeSection, setActiveSection] = useState<string>("motivation");
 
-    <div class="container">
+  const sections = [
+    { id: "motivation", label: "志望動機・自己PR", icon: Sparkles },
+    { id: "projects", label: "プロジェクト", icon: Code2 },
+    { id: "history", label: "学歴・職歴・資格", icon: GraduationCap },
+    { id: "skills", label: "スキル・特技", icon: Music },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 w-64 h-64 bg-blue-300/20 rounded-full blur-3xl"
+          animate={{
+            y: [0, 50, 0],
+            x: [0, 30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-80 h-80 bg-green-300/20 rounded-full blur-3xl"
+          animate={{
+            y: [0, -50, 0],
+            x: [0, -30, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
+
+      {/* Header */}
+      <motion.header 
+        className="relative bg-gradient-to-r from-blue-600 via-green-500 to-blue-600 text-white py-16 px-6 overflow-hidden"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Musical Notes Decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <Music className="absolute top-10 left-10 w-12 h-12 rotate-12" />
+          <Guitar className="absolute bottom-10 right-20 w-16 h-16 -rotate-12" />
+          <Disc3 className="absolute top-20 right-10 w-10 h-10 animate-spin" style={{ animationDuration: '10s' }} />
+          <Headphones className="absolute bottom-20 left-20 w-14 h-14" />
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div 
+            className="flex flex-col md:flex-row items-center gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={itemVariants}>
+              <ImageWithFallback
+                src="cho.jpg"
+                alt="証明写真"
+                className="w-40 h-40 rounded-full border-4 border-white shadow-2xl object-cover"
+              />
+            </motion.div>
+            
+            <motion.div className="flex-1 text-center md:text-left" variants={itemVariants}>
+              <h1 className="mb-2">曺 現煌 (CHO HYUNHWANG)</h1>
+              <p className="text-xl mb-4 text-blue-100">1994年2月10日生 (満31歳)</p>
+              
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                  <Mail className="w-4 h-4" />
+                  <span>whgusghkd777@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                  <Phone className="w-4 h-4" />
+                  <span>+82-10-7481-2589</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 justify-center md:justify-start mt-3 text-sm">
+                <MapPin className="w-4 h-4" />
+                <span>〒04713 ソウル特別市 城東区 行堂路79番地、104棟603号室</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Wave Decoration */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1200 120" className="w-full h-12">
+            <path 
+              d="M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z" 
+              fill="rgb(239 246 255)"
+            />
+          </svg>
+        </div>
+      </motion.header>
+
+      {/* Navigation */}
+      <motion.nav 
+        className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex overflow-x-auto gap-2 py-4">
+            {sections.map((section) => {
+              const Icon = section.icon;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => setActiveSection(section.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-full whitespace-nowrap transition-all ${
+                    activeSection === section.id
+                      ? "bg-gradient-to-r from-blue-500 to-green-500 text-white shadow-lg scale-105"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {section.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-6 py-12 relative z-10">
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Motivation Section */}
+          {activeSection === "motivation" && (
+            <div className="space-y-8">
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-blue-100"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-gradient-to-r from-blue-500 to-green-500 p-3 rounded-xl">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-blue-600">志望動機</h2>
+                </div>
+                <div className="space-y-4 text-gray-700 leading-relaxed">
+                  <p>
+                    私は以前、日本で勤務した経験があり、その中で日本の職人精神に深く感銘を受けました。楽器店で働いた時、お客様一人ひとりのニーズに寄り添った提案を行い、最後まで責任を持って対応する姿勢に心を打たれました。この経験を通じて、仕事に誇りを持ち、細部にまでこだわることの大切さを学びました。IT分野においても、同様に品質へのこだわりを持ち、ユーザーに安心と満足を提供できるサービス開発に取り組みたいと考えています。常に新しい技術が生まれるIT業界において、変化を恐れず学び続けることで、自身の成長につなげたいと思っています。
+                  </p>
+                  <p>
+                    現在はJava・Python・SQLなどの技術を中心に学習を進めており、御社のプロジェクトに参加することで、これらのスキルを実践的に活かしながら、さらに磨きをかけていきたいと考えています。職人のように丁寧で誠実な開発を通じて、チームやユーザーに信頼されるエンジニアを目指してまいります。
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-green-100"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-gradient-to-r from-green-500 to-blue-500 p-3 rounded-xl">
+                    <Guitar className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-green-600">自己PR</h2>
+                </div>
+                <div className="space-y-4 text-gray-700 leading-relaxed">
+                  <p>
+                    私の強みは「課題解決力」と「協調性」です。これまで音楽に関する複数のプロジェクトやバンド活動に携わってきました。特に、日本の友人たちと行ったバンド録音では、限られた時間の中で意見の食い違いや音のバランスなど、さまざまな課題がありました。私はメンバーを信頼し、相手の意見を尊重しながら、必要な場面では具体的なフィードバックを伝えることで、最終的に全員が納得できるサウンドを作り上げることができました。
+                  </p>
+                  <p>
+                    この経験から、チーム内で冷静に課題を分析し、柔軟に対応する力、それで互いを信じて協力し合う姿勢の重要性を学びました。IT業界においても、開発現場では多くのメンバーが関わり、それぞれの意見や役割を調整しながら成果物を完成させていきます。私は音楽制作で培ったコミュニケーション力と協調性を活かし、チーム全体の成果に貢献したいと考えています。常に学ぶ姿勢を持ち、技術力だけでなくチームとの連携を重視しながら、御社のプロジェクトに誠実に取り組んでまいります。
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          )}
+
+          {/* Projects Section */}
+          {activeSection === "projects" && (
+            <div className="space-y-8">
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border-l-8 border-blue-500"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <Code2 className="w-6 h-6 text-blue-600" />
+                  <h3 className="text-blue-600">デジ楽 (ホテル予約サイト)</h3>
+                </div>
+                
+                <div className="inline-block bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-lg mb-6">
+                  「デジ楽」はSpring MVCを基盤としたホテル予約ウェブアプリケーションで、観光客が手軽にホテル検索・部屋選択・予約・決済まで完結できるサービスを目指しました。
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-6">
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="font-semibold text-blue-600">期間:</span> 2025.10.27 ~ 2025.11.14 (チーム開発 5名)
+                    </div>
+                    <div>
+                      <span className="font-semibold text-blue-600">環境:</span> Java 1.8, Spring, Oracle, Apache Tomcat9, Eclipse
+                    </div>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-6 text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
+                    <span><strong>役割:</strong> バックエンド開発担当(メイン)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>Reservation/Payment/Hotel Detailの主要ロジックおよびクエリ実装</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>予約重複防止のための楽観的ロック処理とトランザクション管理</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>Gitを使用せず直接調整を行う協働方式で、MVC構造の重要性を学習</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://github.com/whgusghkd777-debug/dejiraku" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </a>
+                  <a 
+                    href="https://url.kr/fnf22j" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Presentation (PPT)
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border-l-8 border-green-500"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <Music className="w-6 h-6 text-green-600" />
+                  <h3 className="text-green-600">MuSuBi (音楽共有・発見プラットフォーム)</h3>
+                </div>
+                
+                <div className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-lg mb-4">
+                  「検索しない」音楽体験 — 共感でつながる音楽コミュニティ
+                </div>
+                <p className="text-gray-700 mb-6">
+                  再生数操作やランキング至上主義から脱却し、音楽の本質である「共感」を通じて新しいアーティストと出会うプラットフォーム。
+                </p>
+
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 mb-6">
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="font-semibold text-green-600">期間:</span> 2025.12.10 ~ 2025.12.31 (個人開発)
+                    </div>
+                    <div>
+                      <span className="font-semibold text-green-600">環境:</span> Java 17, Spring Boot, Spring Security, JPA, PostgreSQL, VS Code
+                    </div>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-6 text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                    <span><strong>役割:</strong> 企画・設計・実装まで一貫して担当</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>検索機能を意図的に除外し、ランダム再生(ダイス機能)による没入感を優先</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>Spring Securityを用いた認証管理およびJPAによるEntity(1:N, N:M)関連設計</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                    <span>推薦数集計によるランキング機能で、新人アーティストに公平な露出機会を提供</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://github.com/whgusghkd777-debug/MuSuBiMusic" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </a>
+                  <a 
+                    href="https://buly.kr/GvoLgJn" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Presentation (PPT)
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          )}
+
+          {/* History Section */}
+          {activeSection === "history" && (
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+              <div className="space-y-8">
+                {/* Education */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="bg-gradient-to-r from-blue-500 to-green-500 p-3 rounded-xl">
+                      <GraduationCap className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-blue-600">学歴</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { period: "2010.03 ~ 2012.02", status: "卒業", detail: "城東高等学校" },
+                      { period: "2013.03 ~ 2017.02", status: "卒業", detail: "百済芸術大学校 実用音楽学科 ベース専攻(専門学校2年制)" },
+                      { period: "2025.7 ~ 2025.12", status: "修了", detail: "株式会社 Global in 海外就職教育センター (ITコース4期)" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex flex-col md:flex-row gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent rounded-xl border-l-4 border-blue-500"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="md:w-48 text-blue-600">{item.period}</div>
+                        <div className="md:w-20 font-semibold text-green-600">{item.status}</div>
+                        <div className="flex-1 text-gray-700">{item.detail}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Work Experience */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="bg-gradient-to-r from-green-500 to-blue-500 p-3 rounded-xl">
+                      <Briefcase className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-green-600">職歴</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { period: "2017.01 ~ 2018.2", status: "退社", detail: "IFC セキュリティチーム VIP警護業務" },
+                      { period: "2019.04 ~ 2020.05", status: "退社", detail: "ウリ銀行 施設警備・来訪者対応" },
+                      { period: "2021.07 ~ 2023.12", status: "退社", detail: "シンハン銀行 顧客対応・セキュリティ監視" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex flex-col md:flex-row gap-4 p-4 bg-gradient-to-r from-green-50 to-transparent rounded-xl border-l-4 border-green-500"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="md:w-48 text-green-600">{item.period}</div>
+                        <div className="md:w-20 font-semibold text-blue-600">{item.status}</div>
+                        <div className="flex-1 text-gray-700">{item.detail}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Certifications */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="bg-gradient-to-r from-blue-500 to-green-500 p-3 rounded-xl">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-blue-600">資格</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { period: "2025.7", status: "取得", detail: "日本語能力試験(JLPT) N3" },
+                      { period: "2025.11", status: "取得", detail: "日本語能力試験(JPT) 580点" },
+                      { period: "2025.12", status: "受験", detail: "日本語能力試験(JLPT) N2 (1月結果発表予定)" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex flex-col md:flex-row gap-4 p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border-l-4 border-blue-500"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="md:w-48 text-blue-600">{item.period}</div>
+                        <div className="md:w-20 font-semibold text-green-600">{item.status}</div>
+                        <div className="flex-1 text-gray-700">{item.detail}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Skills Section */}
+          {activeSection === "skills" && (
+            <div className="space-y-8">
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-gradient-to-r from-blue-500 to-green-500 p-3 rounded-xl">
+                    <Code2 className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-blue-600">保有スキル</h2>
+                </div>
+                
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {[
+                    "Java (1.8 / 17)",
+                    "Spring / Spring Boot",
+                    "JSP / Servlet",
+                    "Python",
+                    "Oracle / PostgreSQL",
+                    "Spring Security / JPA",
+                    "日本語 (JLPT N2レベル)"
+                  ].map((skill, index) => (
+                    <motion.div
+                      key={skill}
+                      className="px-5 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-lg"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {skill}
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-2xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Guitar className="w-5 h-5 text-blue-600" />
+                      <h3 className="text-blue-600">特技</h3>
+                    </div>
+                    <p className="text-gray-700">音楽編集(Cubase)、ベースおよびエレキギター演奏</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-2xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Headphones className="w-5 h-5 text-green-600" />
+                      <h3 className="text-green-600">趣味</h3>
+                    </div>
+                    <p className="text-gray-700">登山、ランニング、筋力トレーニング、作曲</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-gradient-to-r from-green-500 to-blue-500 p-3 rounded-xl">
+                    <ExternalLink className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-green-600">外部リンク</h2>
+                </div>
+                
+                <div className="space-y-4">
+                  <a 
+                    href="https://github.com/whgusghkd777-debug" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors group"
+                  >
+                    <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                    <div>
+                      <div className="font-semibold">GitHub</div>
+                      <div className="text-sm text-gray-300">github.com/whgusghkd777-debug</div>
+                    </div>
+                  </a>
+                  
+                  <a 
+                    href="https://url.kr/xt4qjr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-xl hover:shadow-lg transition-shadow group"
+                  >
+                    <ExternalLink className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                    <div>
+                      <div className="font-semibold">Technical Blog</div>
+                      <div className="text-sm text-blue-100">Learning Records (Notion)</div>
+                    </div>
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </motion.div>
+      </main>
+
+      {/* Footer */}
+      <motion.footer 
+        className="relative bg-gradient-to-r from-blue-600 via-green-500 to-blue-600 text-white py-12 mt-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+      >
+        <div className="absolute inset-0 opacity-10">
+          <Disc3 className="absolute top-5 left-10 w-8 h-8" />
+          <Music className="absolute bottom-5 right-10 w-8 h-8" />
+        </div>
         
-        <section id="statement">
-            <h2>志望動機</h2>
-            <div class="text-block">私は以前、日本で勤務した経験があり、その中で日本の職人精神に深く感銘を受けました。楽器店で働いた時、お客様一人ひとりのニーズに寄り添った提案を行い、最後まで責任を持って対応する姿勢に心を打たれました。この経験を通じて、仕事に誇りを持ち、細部にまでこだわることの大切さを学びました。IT分野においても、同様に品質へのこだわりを持ち、ユーザーに安心と満足を提供できるサービス開発に取り組みたいと考えています。常に新しい技術が生まれるIT業界において、変化を恐れず学び続けることで、自身の成長につなげたいと思っています。
-
-現在はJava・Python・SQLなどの技術を中心に学習を進めており、御社のプロジェクトに参加することで、これらのスキルを実践的に活かしながら、さらに磨きをかけていきたいと考えています。職人のように丁寧で誠実な開発を通じて、チームやユーザーに信頼されるエンジニアを目指してまいります。</div>
-            
-            <h2>自己PR</h2>
-            <div class="text-block">私の強みは「課題解決力」と「協調性」です。これまで音楽に関する複数のプロジェクトやバンド活動に携わってきました。特に、日本の友人たちと行ったバンド録音では、限られた時間の中で意見の食い違いや音のバランスなど、さまざまな課題がありました。私はメンバーを信頼し、相手の意見を尊重しながら、必要な場面では具体的なフィードバックを伝えることで、最終的に全員が納得できるサウンドを作り上げることができました。
-
-この経験から、チーム内で冷静に課題を分析し、柔軟に対応する力、それで互いを信じて協力し合う姿勢の重要性を学びました。IT業界においても、開発現場では多くのメンバーが関わり、それぞれの意見や役割を調整しながら成果物を完成させていきます。私は音楽制作で培ったコミュニケーション力と協調性を活かし、チーム全体の成果に貢献したいと考えています。常に学ぶ姿勢を持ち、技術力だけでなくチームとの連携を重視しながら、御社のプロジェクトに誠実に取り組んでまいります。</div>
-        </section>
-
-        <section id="projects">
-            <h2>プロジェクト</h2>
-            
-            <div class="project">
-                <span class="project-tagline">「デジ楽」はSpring MVCを基盤としたホテル予約ウェブアプリケーションで、観光客が手軽にホテル検索・部屋選択・予約・決済まで完結できるサービスを目指しました。</span>
-                <h3>デジ楽 (ホテル予約サイト)</h3>
-                <div class="project-meta">
-                    <strong>期間:</strong> 2025.10.27 ~ 2025.11.14 (チーム開発 5名)<br>
-                    <strong>環境:</strong> Java 1.8, Spring, Oracle, Apache Tomcat9, Eclipse
-                </div>
-                <ul>
-                    <li><strong>役割:</strong> バックエンド開発担当(メイン)</li>
-                    <li>Reservation/Payment/Hotel Detailの主要ロジックおよびクエリ実装</li>
-                    <li>予約重複防止のための楽観的ロック処理とトランザクション管理</li>
-                    <li>Gitを使用せず直接調整を行う協働方式で、MVC構造の重要性を学習</li>
-                </ul>
-                <div class="project-links">
-                    <a href="https://github.com/whgusghkd777-debug/dejiraku" target="_blank">GitHub</a>
-                    <a href="https://url.kr/fnf22j" target="_blank">Presentation (PPT)</a>
-                </div>
-            </div>
-
-            <div class="project">
-                <span class="project-tagline">「検索しない」音楽体験 — 共感でつながる音楽コミュニティ<br>再生数操作やランキング至上主義から脱却し、音楽の本質である「共感」を通じて新しいアーティストと出会うプラットフォーム。</span>
-                <h3>MuSuBi (音楽共有・発見プラットフォーム)</h3>
-                <div class="project-meta">
-                    <strong>期間:</strong> 2025.12.10 ~ 2025.12.31 (個人開発)<br>
-                    <strong>環境:</strong> Java 17, Spring Boot, Spring Security, JPA, PostgreSQL, VS Code
-                </div>
-                <ul>
-                    <li><strong>役割:</strong> 企画・設計・実装まで一貫して担当</li>
-                    <li>検索機能を意図的に除外し、ランダム再生(ダイス機能)による没入感を優先</li>
-                    <li>Spring Securityを用いた認証管理およびJPAによるEntity(1:N, N:M)関連設計</li>
-                    <li>推薦数集計によるランキング機能で、新人アーティストに公平な露出機会を提供</li>
-                </ul>
-                <div class="project-links">
-                    <a href="https://github.com/whgusghkd777-debug/MuSuBiMusic" target="_blank">GitHub</a>
-                    <a href="https://buly.kr/GvoLgJn" target="_blank">Presentation (PPT)</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="history">
-            <h2>学歴・職歴・資格</h2>
-            <table>
-                <tr class="category-row"><td colspan="3">学歴</td></tr>
-                <tr><td>2010.03 ~ 2012.02</td><td>卒業</td><td>城東高等学校</td></tr>
-                <tr><td>2013.03 ~ 2017.02</td><td>卒業</td><td>百済芸術大学校 実用音楽学科 ベース専攻(専門学校2年制)</td></tr>
-                <tr><td>2025.7 ~ 2025.12</td><td>修了</td><td>株式会社 Global in 海外就職教育センター (ITコース4期)</td></tr>
-                <tr class="category-row"><td colspan="3">職歴</td></tr>
-                <tr><td>2017.01 ~ 2018.2</td><td>退社<td>IFC セキュリティチーム VIP警護業務</td></tr>
-                <tr><td>2019.04 ~ 2020.05</td><td>退社<td>ウリ銀行 施設警備・来訪者対応</td></tr>
-                <tr><td>2021.07 ~ 2023.12 </td><td>退社<td>シンハン銀行 顧客対応・セキュリティ監視</td></tr>
-                <tr class="category-row"><td colspan="3">資格</td></tr>
-                <tr><td>2025.7</td><td>取得</td><td>日本語能力試験(JLPT) N3 </td></tr>
-                <tr><td>2025.11</td><td>取得</td><td>日本語能力試験(JPT) 580点</td></tr>
-                <tr><td>2025.12</td><td>受験</td><td>日本語能力試験(JLPT) N2 (1月結果発表予定)</td></tr>
-            </table>
-        </section>
-
-        <section id="skills">
-            <h2>保有スキル・特技</h2>
-            <div class="skills">
-                <span class="skill-tag">Java (1.8 / 17)</span>
-                <span class="skill-tag">Spring / Spring Boot</span>
-                <span class="skill-tag">JSP / Servlet</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Oracle / PostgreSQL</span>
-                <span class="skill-tag">Spring Security / JPA</span>
-                <span class="skill-tag">日本語 (JLPT N2レベル)</span>
-            </div>
-            <p><strong>特技:</strong> 音楽編集(Cubase)、ベースおよびエレキギター演奏</p>
-            <p><strong>趣味:</strong> 登山、ランニング、筋力トレーニング、作曲</p>
-        </section>
-
-        <section>
-            <h2>外部リンク</h2>
-            <p>✔ <strong>GitHub:</strong> <a href="https://github.com/whgusghkd777-debug" target="_blank">github.com/whgusghkd777-debug</a></p>
-            <p>✔ <strong>Technical Blog:</strong> <a href="https://url.kr/xt4qjr" target="_blank">Learning Records (Notion)</a></p>
-        </section>
+        <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+          <p className="text-lg">&copy; 2026 CHO HYUNHWANG | GitHub Pagesで公開中</p>
+          <p className="text-sm text-blue-100 mt-2">音楽とITの架け橋を目指して</p>
+        </div>
+      </motion.footer>
     </div>
-
-    <footer>
-        <p>&copy; 2026 CHO HYUNHWANG | GitHub Pagesで公開中</p>
-    </footer>
-
-</body>
-</html>
-
-
-
-
-
-
-
+  );
+}
